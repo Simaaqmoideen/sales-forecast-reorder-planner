@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 METRICS_PATH = ROOT / "reports" / "metrics.csv"
 WEEKDAY_PATH = ROOT / "reports" / "weekday_error.csv"
 FORECAST_PATH = ROOT / "reports" / "forecast.png"
+MODEL_COMPARISON_PATH = ROOT / "reports" / "model_comparison.png"
 
 
 def evaluate_model(data: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -67,6 +68,17 @@ def save_reports(
     metrics.to_csv(METRICS_PATH, index=False)
     weekday_errors.to_csv(WEEKDAY_PATH, index=False)
 
+    comparison, axis = plt.subplots(figsize=(9, 4.5))
+    bars = axis.bar(metrics["model"], metrics["MAE"], color=["#94a3b8", "#64748b", "#2563eb"])
+    axis.set(title="Held-out mean absolute error", ylabel="MAE (units)")
+    axis.grid(axis="y", alpha=0.2)
+    axis.bar_label(bars, fmt="%.2f", padding=3)
+    axis.set_ylim(0, max(metrics["MAE"]) * 1.18)
+    axis.tick_params(axis="x", rotation=12)
+    comparison.tight_layout()
+    comparison.savefig(MODEL_COMPARISON_PATH, dpi=150)
+    plt.close(comparison)
+
     series = forecasts[(forecasts["store"] == 1) & (forecasts["item"] == 1)]
     fig, axis = plt.subplots(figsize=(11, 4))
     axis.plot(series["date"], series["sales"], label="Actual", linewidth=1.5)
@@ -88,6 +100,7 @@ def main() -> None:
     print("\nModel MAE by weekday:")
     print(weekday_errors.round(2).to_string(index=False))
     print(f"Saved forecast chart to {FORECAST_PATH}")
+    print(f"Saved model comparison chart to {MODEL_COMPARISON_PATH}")
 
 
 if __name__ == "__main__":

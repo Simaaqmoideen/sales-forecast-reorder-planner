@@ -12,4 +12,5 @@ models/
 reports/*.png
 !reports/forecast.png
 !reports/sales_overview.png
+!reports/model_comparison.png
 .DS_Store

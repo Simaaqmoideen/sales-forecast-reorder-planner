@@ -19,6 +19,7 @@ python -m pytest -q
 ## Results log
 | Date | Experiment / test | Result | Conclusion |
 |---|---|---|---|
+| 2026-10-27 | `python src/evaluate.py` after adding model comparison chart | Generated `reports/model_comparison.png` from the measured held-out MAE values; metrics and weekday error tables regenerated. `python -m pytest -q`: 10 passed. | README now includes a visual baseline-to-model comparison based on measured run artifacts. |
 | 2026-10-27 | `python src/generate_data.py`; `python src/eda.py` | Generated 27,390 rows from 2019-01-01 to 2023-12-31 (3 stores, 5 items); chart saved to `reports/sales_overview.png`. Friday mean sales: 682.5; Monday: 544.4. Pytest was initially unavailable; it was installed later. | Synthetic data generation and EDA completed; weekday pattern is visible. The full suite was later verified. |
 | 2026-10-27 | `python src/baselines.py` on the 2023-07-01–2023-12-31 time holdout | Yesterday: MAE 9.79, RMSE 13.37, MAPE 22.88%. Last week: MAE 8.83, RMSE 12.06, MAPE 21.03%. Metrics saved in `reports/baseline_metrics.csv`. | Seasonal naive is the stronger baseline so far; the final model must beat MAE 8.83 to meet the project success criterion. |
 | 2026-10-27 | `python src/train.py` | Fitted HistGradientBoosting on 24,210 feature rows from 2019-01-29 through 2023-06-30 and saved `models/sales_model.joblib`. No holdout metrics were used for fitting. | Training artifact was fit only on the training dates; the full suite was later verified. |
