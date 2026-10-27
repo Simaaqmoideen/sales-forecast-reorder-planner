@@ -10,6 +10,7 @@ python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\act
 pip install -r requirements.txt
 python src/generate_data.py
 python src/eda.py
+python src/baselines.py
 python src/train.py
 ```
 Run the tests with `python -m pytest -q` from this folder.
@@ -17,6 +18,9 @@ Run the tests with `python -m pytest -q` from this folder.
 The EDA command validates the generated CSV, prints its coverage and average
 sales by weekday, and writes `reports/sales_overview.png` with the daily sales
 trend and weekday pattern.
+The baseline command compares a one-day naive forecast with the same weekday
+from the previous week, using dates from 2023-07-01 onward as the held-out test
+period. It writes `reports/baseline_metrics.csv`.
 
 ## Folder map
 | Path | Purpose |

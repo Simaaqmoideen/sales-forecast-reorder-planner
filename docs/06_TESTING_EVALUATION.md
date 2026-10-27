@@ -20,3 +20,4 @@ python -m pytest -q
 | Date | Experiment / test | Result | Conclusion |
 |---|---|---|---|
 | 2026-10-27 | `python src/generate_data.py`; `python src/eda.py` | Generated 27,390 rows from 2019-01-01 to 2023-12-31 (3 stores, 5 items); chart saved to `reports/sales_overview.png`. Friday mean sales: 682.5; Monday: 544.4. `python -m pytest -q` could not run: pytest is not installed, and pip could not reach its package index (DNS failure). | Synthetic data generation and EDA completed; weekday pattern is visible. Automated tests remain unverified in this environment. |
+| 2026-10-27 | `python src/baselines.py` on the 2023-07-01–2023-12-31 time holdout | Yesterday: MAE 9.79, RMSE 13.37, MAPE 22.88%. Last week: MAE 8.83, RMSE 12.06, MAPE 21.03%. Metrics saved in `reports/baseline_metrics.csv`. Pytest could not run (`No module named pytest`). | Seasonal naive is the stronger baseline so far; the later ML model must beat MAE 8.83 to meet the project success criterion. |
