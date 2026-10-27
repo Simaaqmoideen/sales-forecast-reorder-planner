@@ -63,12 +63,14 @@ from earlier test days as lag features.
 |---|---:|---:|---:|
 | Naive: yesterday | 9.79 | 13.37 | 22.88% |
 | Seasonal naive: last week | 8.83 | 12.06 | 21.03% |
-| HistGradientBoosting | 5.49 | 7.12 | 13.58% |
+| HistGradientBoosting | 5.49 | 7.12 | 13.60% |
 
 ![Store 1, item 1 held-out forecast compared with actual sales](reports/forecast.png)
 
-The largest model errors are isolated demand spikes, including a synthetic
-promo-day spike; lag and rolling features smooth some of these peaks.
+The largest model error was 42.84 units on a synthetic promo-day spike; other
+large errors were stochastic non-promo peaks. Lag and rolling features smooth
+some of these peaks. Exact scores can vary slightly across supported
+scikit-learn versions.
 
 ## Folder map
 | Path | Purpose |

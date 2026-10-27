@@ -5,7 +5,7 @@
 
 ## Abstract
 
-This project forecasts daily sales for individual store and product pairs to support inventory planning. It uses a reproducible synthetic dataset with calendar, promotion, lag, and rolling-mean features in a time-series pipeline. A HistGradientBoosting model was trained before 2023-07-01 and evaluated on the later 2023-07-01 through 2023-12-31 period using one-step rolling forecasts. The model achieved MAE 5.49, RMSE 7.12, and MAPE 13.58%, improving on the seasonal-naive MAE of 8.83. A Streamlit dashboard and command-line tool turn next-day forecasts into reorder suggestions with configurable safety stock.
+This project forecasts daily sales for individual store and product pairs to support inventory planning. It uses a reproducible synthetic dataset with calendar, promotion, lag, and rolling-mean features in a time-series pipeline. A HistGradientBoosting model was trained before 2023-07-01 and evaluated on the later 2023-07-01 through 2023-12-31 period using one-step rolling forecasts. In the clean Python 3.14 environment, it achieved MAE 5.49, RMSE 7.12, and MAPE 13.60%, improving on the seasonal-naive MAE of 8.83. A Streamlit dashboard and command-line tool turn next-day forecasts into reorder suggestions with configurable safety stock.
 
 ## Introduction
 
@@ -25,13 +25,13 @@ Calendar features include weekday, month, and day of year. Lag features use the 
 |---|---:|---:|---:|
 | Naive: yesterday | 9.79 | 13.37 | 22.88% |
 | Seasonal naive: last week | 8.83 | 12.06 | 21.03% |
-| HistGradientBoosting | 5.49 | 7.12 | 13.58% |
+| HistGradientBoosting | 5.49 | 7.12 | 13.60% |
 
-The model's weekday MAE ranges from 5.03 units on Monday to 5.91 on Sunday. The forecast-versus-actual chart is in `reports/forecast.png`; the EDA trend and weekday chart is in `reports/sales_overview.png`.
+The model's weekday MAE ranges from 5.01 units on Monday to 5.92 on Sunday. The forecast-versus-actual chart is in `reports/forecast.png`; the EDA trend and weekday chart is in `reports/sales_overview.png`.
 
 ## Discussion and error analysis
 
-The model beats both baselines on MAE and stays below the synthetic-data MAPE target of about 15%. The largest absolute miss was 41.36 units for store 3/item 5 on 2023-10-26, a promotion day with an observed spike. Other large misses were stochastic non-promotion peaks. Lag and rolling features smooth such spikes, so the model can under-forecast abrupt demand changes.
+The model beats both baselines on MAE and stays below the synthetic-data MAPE target of about 15%. The largest absolute miss was 42.84 units for store 3/item 5 on 2023-10-26, a promotion day with an observed spike. Other large misses were stochastic non-promotion peaks. Lag and rolling features smooth such spikes, so the model can under-forecast abrupt demand changes. Scores vary slightly across supported scikit-learn versions.
 
 ## Limitations and ethics
 
