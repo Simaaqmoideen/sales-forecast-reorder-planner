@@ -10,4 +10,6 @@ data/*
 !data/sample_movies.csv
 models/
 reports/*.png
+!reports/forecast.png
+!reports/sales_overview.png
 .DS_Store
