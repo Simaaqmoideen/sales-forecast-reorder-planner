@@ -6,9 +6,9 @@ from src.data import clean_sales
 def add_features(df: pd.DataFrame) -> pd.DataFrame:
     """Calendar + lag + rolling features. Every lag/rolling value uses only PAST days."""
     df = clean_sales(df)
-    df["dow"] = df["date"].dt.dayofweek
+    df["dow"] = df["date"].dt.day_of_week
     df["month"] = df["date"].dt.month
-    df["dayofyear"] = df["date"].dt.dayofyear
+    df["dayofyear"] = df["date"].dt.day_of_year
     g = df.groupby(["store", "item"])["sales"]
     df["lag_1"] = g.shift(1)
     df["lag_7"] = g.shift(7)

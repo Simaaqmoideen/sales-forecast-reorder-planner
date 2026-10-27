@@ -10,8 +10,8 @@ for store in range(1, 4):
         base = rng.uniform(15, 45)
         t = np.arange(len(dates))
         trend = 1 + 0.0003 * t
-        weekly = 1 + 0.25 * np.isin(dates.dayofweek, [4, 5, 6])
-        yearly = 1 + 0.2 * np.sin(2 * np.pi * (dates.dayofyear - 80) / 365)
+        weekly = 1 + 0.25 * np.isin(dates.day_of_week, [4, 5, 6])
+        yearly = 1 + 0.2 * np.sin(2 * np.pi * (dates.day_of_year - 80) / 365)
         promo = rng.random(len(dates)) < 0.08
         mu = base * trend * weekly * yearly * (1 + 0.35 * promo) * (1 + 0.1 * (store - 2))
         sales = rng.poisson(mu)
