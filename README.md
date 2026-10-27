@@ -21,6 +21,12 @@ trend and weekday pattern.
 The baseline command compares a one-day naive forecast with the same weekday
 from the previous week, using dates from 2023-07-01 onward as the held-out test
 period. It writes `reports/baseline_metrics.csv`.
+The training command fits a reproducible HistGradientBoosting model on data
+strictly before that cutoff and saves `models/sales_model.joblib`; test-period
+evaluation is reported separately in the next project phase.
+The shared cleaning step rejects invalid values, combines duplicate
+date/store/item records, and fills missing dates within each series with zero
+sales and no promotion.
 
 ## Folder map
 | Path | Purpose |
