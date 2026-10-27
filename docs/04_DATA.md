@@ -24,10 +24,12 @@ The cleaning pipeline combines duplicate date/store/item rows by summing sales
 and retaining the maximum promo flag. Missing dates inside an observed
 store-item series are filled with zero sales and no promotion; this treats an
 absent daily record as no recorded sales.
+The selected synthetic source has promotion flags but no region or holiday
+labels. Holiday effects are therefore not added to the model.
 
 ## Data quality checklist
 - [x] Row count and column types checked
 - [x] Missing values counted and a handling decision recorded
 - [x] Duplicates removed
 - [ ] Outliers and impossible values reviewed
-- [ ] Train / test split strategy written down
+- [x] Train / test split strategy written down

@@ -33,9 +33,9 @@ Time-based test set, metrics table, forecast plot, error analysis by weekday.
 ## Phase 5: Decision layer
 Convert forecast into a suggested reorder quantity with a safety stock. Dashboard and README.
 
-- [ ] Task completed
-- [ ] Notes written in the project log
-- [ ] Changes committed
+- [x] Task completed
+- [x] Notes written in the project log
+- [x] Changes committed
 
 ## Project log
 | Date | What I did | Blockers | Next |
@@ -44,3 +44,4 @@ Convert forecast into a suggested reorder quantity with a safety stock. Dashboar
 | 2026-10-27 | Added prior-day and prior-week baseline forecasts, temporal holdout scoring, and unit tests. On 2023-07-01 through 2023-12-31, yesterday MAE/RMSE/MAPE were 9.79/13.37/22.88%; last-week values were 8.83/12.06/21.03%. | Pytest was initially unavailable; it was later installed from cache and the full suite passed. | Phase 3: engineer leakage-safe features and train the ML model against these baselines. |
 | 2026-10-27 | Added shared sales cleaning (invalid values rejected, duplicate keys aggregated, missing dates filled), a prior-day model feature, and training-only HistGradientBoosting fitting. The model trained on 24,210 rows through 2023-06-30. | Pytest was initially unavailable; it was later installed from cache and the full suite passed. | Phase 4: evaluate the saved model on the held-out dates and compare with both baselines. |
 | 2026-10-27 | Evaluated the baselines and HistGradientBoosting on held-out 2023-07-01–2023-12-31 dates, saved metrics and forecast plots, and reviewed weekday errors and largest misses. ML MAE/RMSE/MAPE were 5.49/7.12/13.58%; all 8 tests passed. | None. | Phase 5: add reorder recommendations and the Streamlit dashboard after the Must-have pipeline passed tests. |
+| 2026-10-27 | Added next-day forecast features, safety-stock reorder CLI, and Streamlit dashboard; completed the report and README. Dashboard shows forecasts, inventory input, reorder suggestion, evaluation metrics, and weekday errors. Browser preview rendered and recommendation updated with stock input; 10 tests passed. | Clean-clone verification remains. | Verify README setup from a clean clone and close out deliverables. |

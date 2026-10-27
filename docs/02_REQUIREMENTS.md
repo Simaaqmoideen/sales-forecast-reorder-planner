@@ -3,17 +3,17 @@
 ## Functional requirements (MoSCoW)
 
 ### Must have
-- [ ] Load and clean historical sales data
-- [ ] Feature engineering: calendar features, lags, rolling means
-- [ ] Time-based split (never random)
-- [ ] Compare a naive baseline against at least one ML model
-- [ ] Report MAE, RMSE and MAPE; plot forecast versus actual
+- [x] Load and clean historical sales data
+- [x] Feature engineering: calendar features, lags, rolling means
+- [x] Time-based split (never random)
+- [x] Compare a naive baseline against at least one ML model
+- [x] Report MAE, RMSE and MAPE; plot forecast versus actual
 
 ### Should have
-- [ ] Per-store / per-product models or store as a feature
-- [ ] Holiday and promotion features
-- [ ] Simple reorder-quantity suggestion from the forecast
-- [ ] Dashboard in Streamlit
+- [x] Per-store / per-product models or store as a feature
+- [ ] Holiday and promotion features (promotion included; source has no holiday labels)
+- [x] Simple reorder-quantity suggestion from the forecast
+- [x] Dashboard in Streamlit
 
 ### Could have (stretch)
 - [ ] Prophet or SARIMA comparison

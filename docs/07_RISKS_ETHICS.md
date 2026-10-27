@@ -4,7 +4,7 @@
 |---|---|
 | Data leakage via lag or rolling features | Shift by at least 1 day before rolling; test with a unit test. |
 | Random split inflates scores | Always split by time. |
-| Forecasts treated as certain | Show error ranges and keep safety stock. |
+| Forecasts treated as certain | Show held-out MAE, state that no prediction interval is calculated, and let the user configure safety stock. |
 
 ## Ethics and responsible-use notes
 - Be honest about limitations in the README and report; do not overstate accuracy.
